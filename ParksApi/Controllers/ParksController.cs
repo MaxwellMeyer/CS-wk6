@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ParkApi.Models;
+using ParksApi.Models;
 
 namespace ParkApi.Controllers
 {
@@ -13,9 +13,9 @@ namespace ParkApi.Controllers
   [ApiController]
   public class ParksController : ControllerBase
   {
-    private readonly ParkApiContext _db;
+    private readonly ParksApiContext _db;
 
-    public ParksController(ParkApiContext db)
+    public ParksController(ParksApiContext db)
     {
       _db = db;
     }
