@@ -100,7 +100,21 @@ namespace ParkApi.Controllers
 
       return NoContent();
     }
+    // DELETE: api/Parks/id
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeletePark(int id)
+    {
+      var park = await _db.Parks.FindAsync(id);
+      if (park == null)
+      {
+        return NotFound();
+      }
 
+      _db.Parks.Remove(park);
+      await _db.SaveChangesAsync();
+
+      return NoContent();
+    }
 
     private bool ParkExists(int id)
     {
