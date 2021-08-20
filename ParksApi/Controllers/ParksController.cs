@@ -19,7 +19,7 @@ namespace ParkApi.Controllers
     {
       _db = db;
     }
-
+    //GET: api/parks
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Park>>> Get(string Name, string Description, string Facilities, string Region, string Stats)
     {
@@ -48,6 +48,19 @@ namespace ParkApi.Controllers
       return await query.ToListAsync();
     }
 
+    // GET: api/Parks/5
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Park>> GetPark(int id)
+    {
+      var park = await _db.Parks.FindAsync(id);
+
+      if (park == null)
+      {
+        return NotFound();
+      }
+
+      return park;
+    }
 
   }
 }
